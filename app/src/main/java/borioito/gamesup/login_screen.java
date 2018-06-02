@@ -14,7 +14,7 @@ public class login_screen extends AppCompatActivity {
     }
 
     protected void passEvent(View v){
-////        startActivity(new Intent(login_screen.this, Activity_event.class));
+        startActivity(new Intent(login_screen.this, activity_event.class));
    }
 
 }
