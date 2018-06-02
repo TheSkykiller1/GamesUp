@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">GamesUp</string>
+    <string name="title_activity_event">Sorties de Jeux-vidéos</string>
+
+    <string name="navigation_drawer_open">Ouvrir le menu</string>
+    <string name="navigation_drawer_close">Fermer le menu</string>
+
+    <string name="action_settings">Options</string>
+</resources>
