@@ -1,15 +1,3 @@
-<<<<<<< Updated upstream
-<component name="libraryTable">
-  <library name="com.android.support:support-annotations:26.1.0@jar">
-    <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/26.1.0/814258103cf26a15fcc26ecce35f5b7d24b73f8/support-annotations-26.1.0.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/26.1.0/29ca6aaf2d4976c13dd7c836e91bd2a61b697bf3/support-annotations-26.1.0-sources.jar!/" />
-    </SOURCES>
-  </library>
-=======
 <component name="libraryTable">
   <library name="com.android.support:support-annotations:26.1.0@jar">
     <CLASSES>
@@ -20,5 +8,4 @@
       <root url="jar://D:/Users/Arnaud Borio/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/26.1.0/29ca6aaf2d4976c13dd7c836e91bd2a61b697bf3/support-annotations-26.1.0-sources.jar!/" />
     </SOURCES>
   </library>
->>>>>>> Stashed changes
 </component>

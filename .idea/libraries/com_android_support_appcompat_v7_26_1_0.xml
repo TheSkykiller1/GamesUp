@@ -1,16 +1,3 @@
-<<<<<<< Updated upstream
-<component name="libraryTable">
-  <library name="com.android.support:appcompat-v7-26.1.0">
-    <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/b03a666178263ac5d84a42d686e4327d/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/b03a666178263ac5d84a42d686e4327d/jars/classes.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/appcompat-v7/26.1.0/2b34456c30d6b6e5db5fa3e8fa02f6cebd5531fd/appcompat-v7-26.1.0-sources.jar!/" />
-    </SOURCES>
-  </library>
-=======
 <component name="libraryTable">
   <library name="com.android.support:appcompat-v7-26.1.0">
     <CLASSES>
@@ -22,5 +9,4 @@
       <root url="jar://D:/Users/Arnaud Borio/.gradle/caches/modules-2/files-2.1/com.android.support/appcompat-v7/26.1.0/2b34456c30d6b6e5db5fa3e8fa02f6cebd5531fd/appcompat-v7-26.1.0-sources.jar!/" />
     </SOURCES>
   </library>
->>>>>>> Stashed changes
 </component>
