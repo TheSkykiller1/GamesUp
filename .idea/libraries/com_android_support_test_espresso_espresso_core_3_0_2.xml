@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <component name="libraryTable">
   <library name="com.android.support.test.espresso:espresso-core-3.0.2">
     <CLASSES>
@@ -9,4 +10,17 @@
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support.test.espresso/espresso-core/3.0.2/433f4f601a3f3835691d80838dd7ff9414931b05/espresso-core-3.0.2-sources.jar!/" />
     </SOURCES>
   </library>
+=======
+<component name="libraryTable">
+  <library name="com.android.support.test.espresso:espresso-core-3.0.2">
+    <CLASSES>
+      <root url="jar://D:/Users/Arnaud Borio/.gradle/caches/transforms-1/files-1.1/espresso-core-3.0.2.aar/0fdd4e654c90589a7aa1cdeb2542bd0e/jars/classes.jar!/" />
+      <root url="file://D:/Users/Arnaud Borio/.gradle/caches/transforms-1/files-1.1/espresso-core-3.0.2.aar/0fdd4e654c90589a7aa1cdeb2542bd0e/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://D:/Users/Arnaud Borio/.gradle/caches/modules-2/files-2.1/com.android.support.test.espresso/espresso-core/3.0.2/433f4f601a3f3835691d80838dd7ff9414931b05/espresso-core-3.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+>>>>>>> Stashed changes
 </component>

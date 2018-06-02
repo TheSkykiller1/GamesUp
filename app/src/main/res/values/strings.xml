@@ -1,3 +1,9 @@
+<<<<<<< Updated upstream
 <resources>
     <string name="app_name">GamesUp</string>
 </resources>
+=======
+<resources>
+    <string name="app_name">GamesUp</string>
+</resources>
+>>>>>>> Stashed changes

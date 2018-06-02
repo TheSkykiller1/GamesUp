@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <component name="libraryTable">
   <library name="com.android.support:support-vector-drawable-26.1.0">
     <CLASSES>
@@ -9,4 +10,17 @@
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-vector-drawable/26.1.0/7a59c417eb560e5ddc2de20792ad45b38e422a5b/support-vector-drawable-26.1.0-sources.jar!/" />
     </SOURCES>
   </library>
+=======
+<component name="libraryTable">
+  <library name="com.android.support:support-vector-drawable-26.1.0">
+    <CLASSES>
+      <root url="file://D:/Users/Arnaud Borio/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/312bb04f0c94e77d549cc3fe7398ed03/res" />
+      <root url="jar://D:/Users/Arnaud Borio/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/312bb04f0c94e77d549cc3fe7398ed03/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://D:/Users/Arnaud Borio/.gradle/caches/modules-2/files-2.1/com.android.support/support-vector-drawable/26.1.0/7a59c417eb560e5ddc2de20792ad45b38e422a5b/support-vector-drawable-26.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+>>>>>>> Stashed changes
 </component>
