@@ -1,5 +1,6 @@
 package borioito.gamesup;
 
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -13,14 +14,50 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class event extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    String[] member_names;
+    TypedArray profile_pics;
+    String[] statues;
+    String[] contactType;
+
+    List<Event_list_item> rowItems;
+    ListView mylistview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
+
+        /**ListView des différents panneau contenant les informations*/
+
+        rowItems = new ArrayList<Event_list_item>();
+        member_names = getResources().getStringArray(R.array.Member_names);
+        profile_pics = getResources().obtainTypedArray(R.array.profile_pics);
+        statues = getResources().getStringArray(R.array.statues);
+        contactType = getResources().getStringArray(R.array.contactType);
+
+        for (int i = 0; i < member_names.length; i++) {
+            Event_list_item item = new Event_list_item(member_names[i],
+                    profile_pics.getResourceId(i, -1), statues[i],
+                    contactType[i]);
+            rowItems.add(item);
+        }
+
+        mylistview = (ListView) findViewById(R.id.list);
+        CustomAdapter adapter = new CustomAdapter(this, rowItems);
+        mylistview.setAdapter(adapter);
+
+        //mylistview.setOnItemClickListener(this);
+
+
+
+        /**Menu Navigation!*/
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -34,6 +71,19 @@ public class event extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+    /**Menu Navigation! Commande d'interface*/
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

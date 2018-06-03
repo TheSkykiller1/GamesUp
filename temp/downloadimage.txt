@@ -1,0 +1,36 @@
+private class GetImages extends AsyncTask<Object, Object, Object>
+{
+    private String requestUrl, imagename_;
+    private ImageView view;
+    private Bitmap bitmap;
+    private FileOutputStream fos;
+
+    private GetImages(String requestUrl, ImageView view, String _imagename_)
+    {
+        this.requestUrl = requestUrl;
+        this.view = view;
+        this.imagename_ = _imagename_;
+    }
+
+    @Override
+    protected Object doInBackground(Object... objects)
+    {
+        try
+        {
+            URL url = new URL(requestUrl);
+            URLConnection conn = url.openConnection();
+            bitmap = BitmapFactory.decodeStream(conn.getInputStream());
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    protected void onPostExecute(Object o)
+    {
+        view.setImageBitmap(bitmap);
+    }
+}
