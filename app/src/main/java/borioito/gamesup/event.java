@@ -50,7 +50,7 @@ public class event extends AppCompatActivity
         }
 
         mylistview = (ListView) findViewById(R.id.list);
-        CustomAdapter adapter = new CustomAdapter(this, rowItems);
+        Event_list_adapter adapter = new Event_list_adapter(this, rowItems);
         mylistview.setAdapter(adapter);
 
         //mylistview.setOnItemClickListener(this);
@@ -70,18 +70,6 @@ public class event extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**Menu Navigation! Commande d'interface*/
     @Override

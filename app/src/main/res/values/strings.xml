@@ -7,6 +7,8 @@
     <string name="navigation_drawer_close">Close menu</string>
 
     <string name="action_settings">Settings</string>
+	<string name="but_follow">Follow</string>
+	<string name="but_unfollow">Stop follow</string>
 	
 	<!-- Names -->
     <string-array name="Member_names">

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:id="@+id/text_titre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/profile_pic"
+        android:paddingBottom="10dp"
+        android:text="txt"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/text_plateforme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/titre"
+        android:layout_below="@+id/titre"
+        android:text="txt"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/titre"
+        android:layout_alignBottom="@+id/titre"
+        android:layout_alignParentRight="true"
+        android:text="txt"
+        android:textSize="16sp" />
+		
+	<Button
+        android:id="@+id/text_but_follow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/titre"
+        android:layout_alignBottom="@+id/titre"
+        android:layout_alignParentRight="true"
+        android:text="@string/but_follow"
+        android:textSize="16sp" />
+
+</RelativeLayout>
