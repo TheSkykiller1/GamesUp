@@ -7,19 +7,19 @@
         <item
             android:id="@+id/nav_follow"
             android:icon="@drawable/ic_follow"
-            android:title="Voir les jeux suivis" />
+            android:title="@string/followedgame" />
     </group>
 
-    <item android:title="Filters">
+    <item android:title="@string/filter_title">
         <menu>
             <item
                 android:id="@+id/filter_ac"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Date croissante" />
+                android:title="@string/filter_asc_date" />
             <item
                 android:id="@+id/filter_dc"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Date décroissante nav_slideshow" />
+                android:title="@string/filter_desc_date" />
         </menu>
     </item>
 

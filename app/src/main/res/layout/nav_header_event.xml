@@ -15,7 +15,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="GamesUp"
+        android:text="@string/app_name"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="30sp" />
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="casual"
         android:paddingTop="15dp"
-        android:text="Know when your most wanted games release!"
+        android:text="@string/apropos"
         android:textAlignment="center"
         android:textSize="18sp"
         android:typeface="normal" />

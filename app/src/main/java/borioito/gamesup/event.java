@@ -72,28 +72,34 @@ public class event extends AppCompatActivity
             final int position_object = position;
             final View viewer=v;
             if(games_List_items.get(position).getIs_follow()==1){
-                textbut_follow.setText("Unfollow");
+                textbut_follow.setText(getString(R.string.but_unfollow));
+                textbut_follow.setText(getString(R.string.but_unfollow));
             }
             else{
-                textbut_follow.setText("Follow");
+                textbut_follow.setText(getString(R.string.but_follow));
+                textbut_follow.setText(getString(R.string.but_follow));
             }
             //Todo LINK TO DATABSE POUR EDITER LES CHAMPS DE SUIVIS
             /**On choisi l'action du bouton*/
             textbut_follow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Button but_follow_state =(Button)viewer.findViewById(R.id.text_but_follow);
+
                     if(games_List_items.get(position_object).getIs_follow()==1){ //Si on suit un jeu alors on arrete de le suivre
                         //ACTION
+                        Button but_follow_state =(Button)viewer.findViewById(R.id.text_but_follow);
                         games_List_items.get(position_object).setIs_follow(0);
-                        but_follow_state.setText("Follow");
-                        //Log.i("Suivi","Event non suivi "+position_object+" IS follow? "+games_List_items.get(position_object).getIs_follow());
+                        but_follow_state.setText(getString(R.string.but_follow));
+                        but_follow_state.setText(getString(R.string.but_follow));
+                        Log.i("Suivi","Event non suivi "+position_object+" IS follow? "+games_List_items.get(position_object).getIs_follow());
                     }
                     else { //Si on ne suit pas ce jeu alors on le suit.
                         //ACTION
+                        Button but_follow_state =(Button)viewer.findViewById(R.id.text_but_follow);
                         games_List_items.get(position_object).setIs_follow(1);
-                        but_follow_state.setText("Unfollow");
-                        //Log.i("Suivi","Event suivi "+position_object+" IS follow? "+games_List_items.get(position_object).getIs_follow());
+                        but_follow_state.setText(getString(R.string.but_unfollow));
+                        but_follow_state.setText(getString(R.string.but_unfollow));
+                        Log.i("Suivi","Event suivi "+position_object+" IS follow? "+games_List_items.get(position_object).getIs_follow());
                     }
                 }
             });
@@ -168,7 +174,7 @@ public class event extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
         email_address = getIntent().getStringExtra("EXTRA_EMAIL");
-        Log.i("Datatransmise","Emailtransfert:  "+email_address);
+        //Log.i("Datatransmise","Emailtransfert:  "+email_address);
         /**ListView des releases*/
         actualiser_listview();
 
