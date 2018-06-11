@@ -11,17 +11,29 @@
 	<string name="but_unfollow">Stop follow</string>
 	
 	<!-- Names -->
-    <string-array name="Member_names">
-        <item>Robert</item>
-        <item>Shanni</item>
-        <item>Rachael</item>
-        <item>Maddy</item>
-        <item>Kate</item>
-        <item>Nikhil</item>
+    <string-array name="Games_Names">
+        <item>CS GO</item>
+        <item>Battlefield</item>
+        <item>Overwatch</item>
+        <item>Fornite</item>
+        <item>PUBG</item>
+        <item>The Crew 2</item>
+		<item>CS GO</item>
+        <item>Battlefield</item>
+        <item>Overwatch</item>
+        <item>Fornite</item>
+        <item>PUBG</item>
+        <item>The Crew 2</item>
+		<item>CS GO</item>
+        <item>Battlefield</item>
+        <item>Overwatch</item>
+        <item>Fornite</item>
+        <item>PUBG</item>
+        <item>The Crew 2</item>
     </string-array>
 
     <!-- Pictures -->
-    <array name="profile_pics">
+    <array name="Games_Pics">
         <item>@drawable/robert</item>
         <item>@drawable/shanni</item>
         <item>@drawable/rachael</item>
@@ -31,22 +43,46 @@
     </array>
 
     <!-- Status -->
-    <string-array name="statues">
-        <item>Blogging</item>
-        <item>Available</item>
-        <item>Busy</item>
-        <item>In a meeting</item>
-        <item>At work</item>
-        <item>At gym</item>
+    <string-array name="Games_Plateform">
+        <item>Xbox, PC</item>
+        <item>PS4</item>
+        <item>PC</item>
+        <item>Lulux</item>
+        <item>Xbox, PC</item>
+        <item>PS4</item>
+        <item>PC</item>
+        <item>Lulux</item>
+        <item>Xbox, PC</item>
+        <item>PS4</item>
+        <item>PC</item>
+        <item>Lulux</item>
+		<item>Xbox, PC</item>
+        <item>PS4</item>
+        <item>PC</item>
+        <item>Lulux</item>
+        <item>Xbox, PC</item>
+        <item>PS4</item>
     </string-array>
 
     <!-- contact type -->
-    <string-array name="contactType">
-        <item>Mobile</item>
-        <item>Work</item>
-        <item>Home</item>
-        <item>Work</item>
-        <item>Mobile</item>
-        <item>Mobile</item>
+    <string-array name="Games_ReleaseDate">
+        <item>23/05/2018</item>
+        <item>22/06/2018</item>
+        <item>23/05/2018</item>
+        <item>22/06/2018</item>
+        <item>23/05/2018</item>
+        <item>22/06/2018</item>
+		<item>23/05/2018</item>
+        <item>22/06/2018</item>
+        <item>23/05/2018</item>
+        <item>22/06/2018</item>
+        <item>23/05/2018</item>
+        <item>22/06/2018</item>
+		<item>23/05/2018</item>
+        <item>22/06/2018</item>
+        <item>23/05/2018</item>
+        <item>22/06/2018</item>
+        <item>23/05/2018</item>
+        <item>22/06/2018</item>
     </string-array>
 </resources>

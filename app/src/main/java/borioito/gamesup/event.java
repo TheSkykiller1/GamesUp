@@ -13,48 +13,48 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.*;
-
+import android.view.*;
 import java.util.ArrayList;
 import java.util.List;
+import android.widget.AdapterView.OnItemClickListener;
 
 
 public class event extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    String[] member_names;
-    TypedArray profile_pics;
-    String[] statues;
-    String[] contactType;
-
-    List<Event_list_item> rowItems;
-    ListView mylistview;
+    private ListView listviewGames;
+    private List<Event_list_games> games_List_items;
+    private Event_list_adapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
 
-        /**ListView des différents panneau contenant les informations*/
 
-        rowItems = new ArrayList<Event_list_item>();
-        member_names = getResources().getStringArray(R.array.Member_names);
-        profile_pics = getResources().obtainTypedArray(R.array.profile_pics);
-        statues = getResources().getStringArray(R.array.statues);
-        contactType = getResources().getStringArray(R.array.contactType);
+        /**ListView des releases*/
 
-        for (int i = 0; i < member_names.length; i++) {
-            Event_list_item item = new Event_list_item(member_names[i],
-                    profile_pics.getResourceId(i, -1), statues[i],
-                    contactType[i]);
-            rowItems.add(item);
-        }
+        listviewGames = (ListView)findViewById(R.id.list);
+        games_List_items = new ArrayList<>();
 
-        mylistview = (ListView) findViewById(R.id.list);
-        Event_list_adapter adapter = new Event_list_adapter(this, rowItems);
-        mylistview.setAdapter(adapter);
+        games_List_items.add(new Event_list_games(1,"CSGO","XBOX","23/05/2018"));
+        games_List_items.add(new Event_list_games(2,"battlefield","PC","23/05/2018"));
+        games_List_items.add(new Event_list_games(3,"overwatch","PC","23/05/2018"));
+        games_List_items.add(new Event_list_games(4,"Little pony","PS4","23/05/2018"));
+        games_List_items.add(new Event_list_games(5,"Mario","wii","23/05/2018"));
+        games_List_items.add(new Event_list_games(6,"Fortnite","PC","23/05/2018"));
+        games_List_items.add(new Event_list_games(7,"didisco","XBOX","23/05/2018"));
+        games_List_items.add(new Event_list_games(8,"Looss","PS4","23/05/2018"));
 
-        //mylistview.setOnItemClickListener(this);
-
+        adapter = new Event_list_adapter(getApplicationContext(),games_List_items);
+        listviewGames.setAdapter(adapter);
+        listviewGames.setItemsCanFocus(false);
+        listviewGames.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick (AdapterView<?> parent, View view, int position, long id){
+                Toast.makeText(getApplicationContext(), "Click on=" + view.getTag(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         /**Menu Navigation!*/

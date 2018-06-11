@@ -9,22 +9,29 @@
     android:background="#ffffff"
     android:orientation="vertical"
     >
+    <ImageView
+        android:id="@+id/games_pic"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:contentDescription="desc"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
     <TextView
         android:id="@+id/text_titre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/profile_pic"
+        android:layout_toRightOf="@+id/games_pic"
         android:paddingBottom="10dp"
         android:text="txt"
-        android:textSize="20sp" />
+        android:textSize="20sp" /> <!--android:layout_toRightOf="@+id/games_pic"-->
 
     <TextView
         android:id="@+id/text_plateforme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/titre"
-        android:layout_below="@+id/titre"
+        android:layout_alignLeft="@+id/text_titre"
+        android:layout_below="@+id/text_titre"
         android:text="txt"
         android:textSize="16sp" />
 
@@ -32,20 +39,18 @@
         android:id="@+id/text_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/titre"
-        android:layout_alignBottom="@+id/titre"
+        android:layout_alignRight="@+id/text_titre"
         android:layout_alignParentRight="true"
         android:text="txt"
         android:textSize="16sp" />
 		
-	<Button
+	<!--<Button
         android:id="@+id/text_but_follow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/titre"
-        android:layout_alignBottom="@+id/titre"
+        android:layout_below="@+id/text_date"
         android:layout_alignParentRight="true"
         android:text="@string/but_follow"
-        android:textSize="16sp" />
+        android:textSize="16sp" />-->
 
 </RelativeLayout>

@@ -1,36 +1,53 @@
 package borioito.gamesup;
 
-public class Event_list_games {
+import android.content.res.TypedArray;
 
+public class Event_list_games {
+/**Class objet "Games Event" Contient toutes les informations sur le jeu*/
+	//private int pics_id;
 	private String titre;
 	private String plateforme;
 	private String date;
+	private int id;
 
-	public Event_list_games(String titre,String plateforme, String date) {
-		this.titre = titre;
+	public Event_list_games(int id, String titre/*,int pics_id*/,String plateforme, String date) {
+        //this.pics_id = pics_id;
+        this.id = id;
+	    this.titre = titre;
 		this.plateforme = plateforme;
 		this.date = date;
 	}
+	//Setter, getter
 
-	public String gettitre_name() {
-		return titre;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void settitre_name(String titre) {
-		this.titre = titre;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getplateforme() {
-		return plateforme;
-	}
+    public String getTitre() {
+        return titre;
+    }
 
-	public void setplateforme(String plateforme) {
-		this.plateforme = plateforme;
-	}
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
 
-	public String getdate() { return date;	}
+    public String getPlateforme() {
+        return plateforme;
+    }
 
-	public void setdate(String date) {
-		this.date = date;
-	}
+    public void setPlateforme(String plateforme) {
+        this.plateforme = plateforme;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 }

@@ -1,5 +1,4 @@
 package borioito.gamesup;
-
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,12 +33,18 @@ public class Event_list_adapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		View v = View.inflate(mContext,R.layout.list_gamesevent, null);
-		TextView text_titre = (TextView)v.findViewById(R.id.text_titre);
-		TextView text_plateforme = (TextView)v.findViewById(R.id.text_plateforme);
-		TextView text_date = (TextView)v.findViewById(R.id.text_date);
+        View v = View.inflate(mContext,R.layout.list_gamesevent, null);
+        TextView texttitre = (TextView)v.findViewById(R.id.text_titre);
+        TextView textplateforme = (TextView)v.findViewById(R.id.text_plateforme);
+        TextView textdate = (TextView)v.findViewById(R.id.text_date);
 
-		return convertView;
+        texttitre.setText(rowGameslist.get(position).getTitre());
+        textplateforme.setText(rowGameslist.get(position).getPlateforme());
+        textdate.setText(rowGameslist.get(position).getDate());
+
+        v.setTag(rowGameslist.get(position));
+        //v.setTag("YOLO");
+        return v;
 	}
 
 }
