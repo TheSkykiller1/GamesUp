@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">GamesUp</string>
+    <string name="title_activity_event">Sorties de Jeux-vidéos</string>
+
+    <string name="navigation_drawer_open">Ouvrir le menu</string>
+    <string name="navigation_drawer_close">Fermer le menu</string>
+
+    <string name="action_settings">Options</string>
+	<string name="but_follow">S\'abonner</string>
+	<string name="but_unfollow">Se désabonner</string>
+    <string name="apropos">Découvrer les sorties des prochains jeux!</string>
+    <string name="followedgame">Voir les jeux suivis</string>
+    <string name="filter_asc_date">Date croissante</string>
+    <string name="filter_desc_date">Date décroissante</string>
+    <string name="filter_title">Filtres</string>
+</resources>

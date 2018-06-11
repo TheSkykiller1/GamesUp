@@ -1,3 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">GamesUp</string>
+    <string name="title_activity_event">Games Release</string>
+
+    <string name="navigation_drawer_open">Open menu</string>
+    <string name="navigation_drawer_close">Close menu</string>
+
+    <string name="action_settings">Settings</string>
+	<string name="but_follow">Follow</string>
+	<string name="but_unfollow">Unfollow</string>
+    <string name="apropos">Know when your most wanted games release!</string>
+    <string name="followedgame">Show followed games</string>
+    <string name="filter_asc_date">Order by date ASC</string>
+    <string name="filter_desc_date">Order by date DESC</string>
+    <string name="filter_title">Filters</string>
 </resources>
