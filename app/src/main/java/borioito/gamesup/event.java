@@ -210,11 +210,15 @@ public class event extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_follow) {
-            // Handle the camera action
+            if(global_event=="Yes"){
+                global_event="No";
+            }
+            else{
+                global_event="Yes";
+            }
+            actualiser_listview();
         } else if (id == R.id.filter_ac) {
 
         } else if (id == R.id.filter_dc) {
