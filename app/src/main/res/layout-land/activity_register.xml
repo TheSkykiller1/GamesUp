@@ -1,6 +1,5 @@
 <?xml version = "1.0" encoding = "utf-8"?>
 <!-- Created by Armand ITO on 10/06/2018.  -->
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools = "http://schemas.android.com/tools"
     android:layout_width="fill_parent"
@@ -27,7 +26,7 @@
         android:id="@+id/editText"
         android:layout_marginBottom="8dp"
         android:theme="@style/TextLabel"
-        >,pzrhjtpjporjtkh^prkthprtk;mdfgnk
+        >
         <EditText android:id="@+id/input_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,7 +72,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/signup"
+        android:id="@+id/button"
         android:text="Create account"
         android:layout_below="@+id/editText3"
         />
