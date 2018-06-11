@@ -16,6 +16,8 @@ public class login_screen extends AppCompatActivity {
 
     public void passevent(View v){
         Intent myIntent = new Intent(login_screen.this, event.class);
+        String email = "email@gmail.com";
+        myIntent.putExtra("EXTRA_EMAIL", email);
         login_screen.this.startActivity(myIntent);
    }
 }

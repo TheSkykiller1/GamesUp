@@ -26,6 +26,7 @@ import android.widget.Toast;
 public class event extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    String email_address;
     ListView listviewGames;
     List<Event_list_games> games_List_items;
     Event_list_adapter adapter;
@@ -72,36 +73,38 @@ public class event extends AppCompatActivity
             final View viewer=v;
             if(games_List_items.get(position).getIs_follow()==1){
                 textbut_follow.setText("Unfollow");
-                /**On choisi l'action du bouton unfollow*/
-                textbut_follow.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Button but_follow_state =(Button)viewer.findViewById(R.id.text_but_follow);
-                        but_follow_state.setText("Follow");
-                        games_List_items.get(position_object).setIs_follow(0);
-                        Log.i("Suivi","Event non suivi "+position_object+" Et donnée "+games_List_items.get(position_object).getIs_follow());
-                    }
-                });
             }
             else{
                 textbut_follow.setText("Follow");
-                /**On choisi l'action du bouton follow*/
-                textbut_follow.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Button but_follow_state =(Button)viewer.findViewById(R.id.text_but_follow);
-                        but_follow_state.setText("Unfollow");
-                        games_List_items.get(position_object).setIs_follow(1);
-                        Log.i("Suivi","Event suivi "+position_object+" Et donnée "+games_List_items.get(position_object).getIs_follow());
-                    }
-                });
             }
+            //Todo LINK TO DATABSE POUR EDITER LES CHAMPS DE SUIVIS
+            /**On choisi l'action du bouton*/
+            textbut_follow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Button but_follow_state =(Button)viewer.findViewById(R.id.text_but_follow);
+                    if(games_List_items.get(position_object).getIs_follow()==1){ //Si on suit un jeu alors on arrete de le suivre
+                        //ACTION
+                        games_List_items.get(position_object).setIs_follow(0);
+                        but_follow_state.setText("Follow");
+                        //Log.i("Suivi","Event non suivi "+position_object+" IS follow? "+games_List_items.get(position_object).getIs_follow());
+                    }
+                    else { //Si on ne suit pas ce jeu alors on le suit.
+                        //ACTION
+                        games_List_items.get(position_object).setIs_follow(1);
+                        but_follow_state.setText("Unfollow");
+                        //Log.i("Suivi","Event suivi "+position_object+" IS follow? "+games_List_items.get(position_object).getIs_follow());
+                    }
+                }
+            });
             v.setTag(games_List_items.get(position).getId_component());
             return v;
         }
 
     }
-
+    public void afficher_notification(){
+        //Todo prendre les infos sur les jeux sortant ce mois-ci et qui sont follow par l'utilisateur.
+    }
     public void get_event_from_database()
     {
         //Take all data after a certain date-1
@@ -151,11 +154,11 @@ public class event extends AppCompatActivity
         adapter = new Event_list_adapter(getApplicationContext());
         listviewGames.setAdapter(adapter);
         //listviewGames.setItemsCanFocus(false);
-        /**Si l'on clique sur le cadre du jeu on lance un évenement qui affiche un toast*/
+        /**Si l'on clique sur le cadre du jeu on lance un évenement d'interaction*/
         listviewGames.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick (AdapterView<?> parent, View view, int position, long id){
-                Toast.makeText(getApplicationContext(), "Click on=" + view.getTag()+" Position: "+position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Click on=" + view.getTag()+" Position: "+position, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -164,7 +167,8 @@ public class event extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
-
+        email_address = getIntent().getStringExtra("EXTRA_EMAIL");
+        Log.i("Datatransmise","Emailtransfert:  "+email_address);
         /**ListView des releases*/
         actualiser_listview();
 
