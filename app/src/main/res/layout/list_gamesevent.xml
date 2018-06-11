@@ -44,13 +44,15 @@
         android:text="txt"
         android:textSize="16sp" />
 		
-	<!--<Button
+	<Button
         android:id="@+id/text_but_follow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_date"
         android:layout_alignParentRight="true"
         android:text="@string/but_follow"
-        android:textSize="16sp" />-->
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textSize="16sp" />
 
 </RelativeLayout>
