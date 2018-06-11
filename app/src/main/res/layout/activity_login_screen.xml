@@ -90,13 +90,13 @@
         android:layout_toStartOf="@+id/textview" />
 
     <Button
+        android:id="@+id/eventpasser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Connect"
-        android:id="@+id/button2"
-        android:onClick="passEvent"
         android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/textview"
         android:layout_toRightOf="@+id/textview"
-        android:layout_toEndOf="@+id/textview" />
+        android:onClick="passevent"
+        android:text="Event viewer" />
 
 </RelativeLayout>
