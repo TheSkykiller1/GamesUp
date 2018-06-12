@@ -58,7 +58,7 @@ public class event extends AppCompatActivity
     String filter="ASC";
     int Notification_id=10;
     String CHANNEL_ID;
-
+    String Notif_TEXT=" ";
     //Pour la récuperation dans la databse
     List<Games_release_object> Games_releases_global;
     List<Games_release_object> Games_releases_followed;
@@ -290,7 +290,7 @@ public class event extends AppCompatActivity
 
                         games_List_items.get(position_object).setIs_follow(0);
                         but_follow_state.setText(getString(R.string.but_follow));
-                        Log.i("Suivi","Event non suivi "+position_object+"+email "+ email_address +"Article id"+games_List_items.get(position_object).getId_article());
+                        //Log.i("Suivi","Event non suivi "+position_object+"+email "+ email_address +"Article id"+games_List_items.get(position_object).getId_article());
                     }
                     else { //Si on ne suit pas ce jeu alors on le suit.
                         //ACTION
@@ -303,7 +303,7 @@ public class event extends AppCompatActivity
 
                         games_List_items.get(position_object).setIs_follow(1);
                         but_follow_state.setText(getString(R.string.but_unfollow));
-                        Log.i("Suivi","Event suivi "+position_object+" +email "+ email_address + "Article ID? "+games_List_items.get(position_object).getId_article());
+                       // Log.i("Suivi","Event suivi "+position_object+" +email "+ email_address + "Article ID? "+games_List_items.get(position_object).getId_article());
                     }
                 }
             });
@@ -312,7 +312,6 @@ public class event extends AppCompatActivity
         }
 
     }
-
     /**Create notification*/
     private void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
@@ -331,16 +330,16 @@ public class event extends AppCompatActivity
     }
     private void setOnTap(){
         // Create an explicit intent for an Activity in your app
-        Intent intent = new Intent(this, login_screen.class);
+        Intent intent = new Intent(this, event.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_menu_send)
+                .setSmallIcon(R.drawable.ic_follow)
                 .setContentTitle(getString(R.string.notif_title))
-                .setContentText("Liste des jeux qui vont sortir que vous suivez: \n Much longer text that cannot fit one line...\n Again and Again \n TEST")
+                .setContentText(getString(R.string.followed_game_notif_text)+Notif_TEXT)
                 .setStyle(new NotificationCompat.BigTextStyle()
-                        .bigText("Liste des jeux qui vont sortir que vous suivez: \n Much longer text that cannot fit one line...\n Again and Again \n TEST"))
+                        .bigText(getString(R.string.followed_game_notif_text)+Notif_TEXT))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 // Set the intent that will fire when the user taps the notification
                 .setContentIntent(pendingIntent)
@@ -348,29 +347,61 @@ public class event extends AppCompatActivity
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         notificationManager.notify(Notification_id, mBuilder.build());
     }
-    private final void createNotification(){
-        createNotificationChannel(); //Execute seulement une fois pour android 8+
-        setOnTap();
-    }
     public void afficher_notification(){
-        //Todo prendre les infos sur les jeux sortant ce mois-ci et qui sont follow par l'utilisateur.
+        createNotificationChannel(); //Execute seulement une fois pour android 8+
         List<Games_release_object> Games_followed_release_this_month = new ArrayList<>();
-        if(Games_followed_release_this_month.size()>0){
-            String notification_text="";
-            for(Games_release_object item_followed: Games_followed_release_this_month){
-                notification_text += item_followed.getTitre()+ " ";
+
+        //Puis les data followed
+        final String temp_global2 = "No";
+        final String temp_filter2 = "MONTH";
+        final String temp_email2= email_address;
+        AsyncEvent_get follow_get_month = new event.AsyncEvent_get();
+        follow_get_month.execute(temp_filter2,temp_global2,temp_email2);
+        try {
+            String array=follow_get_month.get();
+            JSONArray boss = new JSONArray(array);
+            JSONObject bigboss = null;
+            for(int j=0;j<boss.length();j++){
+                bigboss=boss.getJSONObject(j); //On recup la premiere ligne
+                int fill_id= Integer.parseInt(bigboss.getString("idevent"));
+                String v1 = bigboss.getString("titre");
+                String v2 = bigboss.getString("plateformes");
+                String v3 = bigboss.getString("date");
+                Games_followed_release_this_month.add(new Games_release_object(fill_id,v1,v2,v3));
             }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+        int o=0;
+        if(Games_followed_release_this_month.size()>0){
+            for(Games_release_object item_followed: Games_followed_release_this_month){
+                if(o>5){
+                    break;
+                }
+                else{
+                    Notif_TEXT += item_followed.getTitre()+ " " + item_followed.getDate()+ " \n\t\t"+item_followed.getPlateforme()+ "\n";
+                }
+            }
+            setOnTap();
+        }
+
     }
 
     /**ListView data*/
     public void get_event_from_database()
     {
-        createNotificationChannel(); //Execute seulement une fois.
-        createNotification();
+
+        if(notification_send==0){
+            afficher_notification();
+        }
 
         Games_releases_global = new ArrayList<>();
         Games_releases_followed = new ArrayList<>();
+
 
         //On recupere les data globales
         final String temp_global = "Yes";
@@ -470,7 +501,8 @@ public class event extends AppCompatActivity
         listviewGames.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick (AdapterView<?> parent, View view, int position, long id){
-                Toast.makeText(getApplicationContext(), "Click on=" + view.getTag()+" Position: "+position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Click on=" + view.getTag()+" Position: "+position, Toast.LENGTH_SHORT).show();
+                //IDEA: create activity with more details
             }
         });
     }
@@ -516,15 +548,16 @@ public class event extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
+        if (id == R.id.nav_follow1)
+        {
+            global_event="Yes";
+            this.setTitle(getResources().getText(R.string.title_activity_event));
+            filter="ASC";
+            actualiser_listview();
+        }
         if (id == R.id.nav_follow) {
-            if(global_event=="Yes"){
-                global_event="No";
-                this.setTitle(getResources().getText(R.string.title_followed));
-            }
-            else{
-                global_event="Yes";
-                this.setTitle(getResources().getText(R.string.title_activity_event));
-            }
+            global_event="No";
+            this.setTitle(getResources().getText(R.string.title_followed));
             filter="ASC";
             actualiser_listview();
         } else if (id == R.id.filter_ac) {

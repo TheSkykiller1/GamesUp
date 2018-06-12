@@ -23,10 +23,12 @@
     <string name="create_account">No account yet? Create one</string>
     <string name="create_count">Créer ton compte</string>
     <string name="hint_email"> Email</string>
+    <string name="liste">Games List</string>
 
-    <string name="notif_title">GamesUp: One or more games followed will release this month!</string>
+    <string name="notif_title">GamesUp: Games followed releases this month!</string>
     <string name="notif_channel_title">GamesUp-Notifier</string>
     <string name="notif_channel_description">Notification of latest games release that you follow</string>
 
     <string name="loading_text">Loading data...</string>
+    <string name="followed_game_notif_text">Games: Title, Date, Plateform\n</string>
 </resources>
