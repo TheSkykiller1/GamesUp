@@ -20,7 +20,7 @@
     <TextView
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
-        android:text = "GamesUp"
+        android:text = "@string/app_name"
         android:id = "@+id/titleApp"
         android:layout_centerHorizontal = "true"
         android:textColor = "@color/white"
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:textColor = "@color/white"
             android:inputType="textEmailAddress"
-            android:hint=" Email"/>
+            android:hint="@string/hint_email"/>
     </android.support.design.widget.TextInputLayout>
 
     <!-- Password Label -->
@@ -68,14 +68,14 @@
             android:layout_height="wrap_content"
             android:textColor = "@color/white"
             android:inputType="textPassword"
-            android:hint="Password"/>
+            android:hint="@string/hint_password"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button"
-        android:text="login"
+        android:text="@string/connecttoapp"
         android:layout_below="@+id/editText2"
         />
 
@@ -87,7 +87,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:text="No account yet? Create one"
+        android:text="@string/create_account"
         android:gravity="center"
         android:onClick="mysignup"
         android:textSize="16dip"/>
@@ -101,13 +101,12 @@
         android:padding="25dp"
         android:gravity="center"/>
 
-    <Button
-        android:id="@+id/eventpasser"
+    <!--android:id="@+id/eventpasser"-->
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:text="Connect/contact"
-        android:onClick="passEvent"
+        android:text="@string/email_contact"
+        android:textColor = "@color/white"
         android:layout_below="@+id/tv_check_connection"
         />
 

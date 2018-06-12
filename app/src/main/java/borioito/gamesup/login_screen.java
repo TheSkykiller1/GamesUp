@@ -61,7 +61,7 @@ public class login_screen extends AppCompatActivity {
         setContentView(R.layout.activity_login_screen);
 
         b_login = (Button)findViewById(R.id.button);
-        b_contact = (Button)findViewById(R.id.button2);
+        //b_contact = (Button)findViewById(R.id.button2);
 
         ed_email = (EditText)findViewById(R.id.input_email);
         ed_passwd = (EditText)findViewById(R.id.input_password);
@@ -174,14 +174,6 @@ public class login_screen extends AppCompatActivity {
     protected void mysignup(View v){
         startActivity(new Intent(login_screen.this, register.class));
     }
-
-    /**
-     *
-     * @param v
-     */
-    protected void passEvent(View v){
-////        startActivity(new Intent(login_screen.this, Activity_event.class));
-   }
 
     /**
      *
@@ -318,12 +310,12 @@ public class login_screen extends AppCompatActivity {
 
             if(result.equalsIgnoreCase("true"))
             {
-                /*Intent intent = new Intent(login_screen.this,SuccessActivity.class);
+                Intent intent = new Intent(login_screen.this,event.class);
                 intent.putExtra("EXTRA_EMAIL", ed_email.getText().toString());
                 startActivity(intent);
-                login_screen.this.finish();*/
+                login_screen.this.finish();
 
-                Toast.makeText(login_screen.this, "Validation", Toast.LENGTH_LONG).show();
+                //Toast.makeText(login_screen.this, "Validation", Toast.LENGTH_LONG).show();
             }else if (result.equalsIgnoreCase("false")){
 
                 // If username and password does not match display a error message

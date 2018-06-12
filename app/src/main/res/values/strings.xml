@@ -15,4 +15,10 @@
     <string name="filter_desc_date">Order by date DESC</string>
     <string name="filter_title">Filters</string>
 	<string name="connecttoapp">Log in</string>
+    <string name="email_contact">Support: contact.gamesup@gmail.com</string>
+
+    <string name="hint_password">Password</string>
+    <string name="hint_password_confirm">Password confirmation</string>
+    <string name="create_account">No account yet? Create one</string>
+    <string name="hint_email"> Email</string>
 </resources>

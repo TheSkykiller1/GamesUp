@@ -31,7 +31,6 @@ public class event extends AppCompatActivity
     List<Event_list_games> games_List_items;
     Event_list_adapter adapter;
     int notification_send=0;//On n'envoi que une fois la notif tant que l'application est ouverte
-    String filter="None";//Les filtres
     String global_event="Yes";//Yes = tous les event, No = Follow only
 
     public class Event_list_adapter extends BaseAdapter {
@@ -73,10 +72,8 @@ public class event extends AppCompatActivity
             final View viewer=v;
             if(games_List_items.get(position).getIs_follow()==1){
                 textbut_follow.setText(getString(R.string.but_unfollow));
-                textbut_follow.setText(getString(R.string.but_unfollow));
             }
             else{
-                textbut_follow.setText(getString(R.string.but_follow));
                 textbut_follow.setText(getString(R.string.but_follow));
             }
             //Todo LINK TO DATABSE POUR EDITER LES CHAMPS DE SUIVIS
@@ -90,16 +87,15 @@ public class event extends AppCompatActivity
                         Button but_follow_state =(Button)viewer.findViewById(R.id.text_but_follow);
                         games_List_items.get(position_object).setIs_follow(0);
                         but_follow_state.setText(getString(R.string.but_follow));
-                        but_follow_state.setText(getString(R.string.but_follow));
-                        Log.i("Suivi","Event non suivi "+position_object+" IS follow? "+games_List_items.get(position_object).getIs_follow());
+
+                        //Log.i("Suivi","Event non suivi "+position_object+" IS follow? "+games_List_items.get(position_object).getIs_follow());
                     }
                     else { //Si on ne suit pas ce jeu alors on le suit.
                         //ACTION
                         Button but_follow_state =(Button)viewer.findViewById(R.id.text_but_follow);
                         games_List_items.get(position_object).setIs_follow(1);
                         but_follow_state.setText(getString(R.string.but_unfollow));
-                        but_follow_state.setText(getString(R.string.but_unfollow));
-                        Log.i("Suivi","Event suivi "+position_object+" IS follow? "+games_List_items.get(position_object).getIs_follow());
+                        //Log.i("Suivi","Event suivi "+position_object+" IS follow? "+games_List_items.get(position_object).getIs_follow());
                     }
                 }
             });
@@ -111,24 +107,48 @@ public class event extends AppCompatActivity
     public void afficher_notification(){
         //Todo prendre les infos sur les jeux sortant ce mois-ci et qui sont follow par l'utilisateur.
     }
+
     public void get_event_from_database()
     {
-        //Take all data after a certain date-1
-        //SELECT idevent,titre,date FROM table WHERE TheNameOfTimestampColumn > DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 1 DAY)
-        /*
-        a terminer (notif)
-        SELECT  idevent,titre,date
-        FROM    event
-        WHERE   date >= DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 1 DAY) AND
-        date   <= DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 1 DAY)
-        */
-        ////
-        //Todo appliquer les filtres
-        //Todo choisir le mode de visualition
-        //Todo connection bdd
-        //Todo Notif grace a la bdd directement
+        List<Games_release_object> Games_releases_global = new ArrayList<>();
+        List<Games_release_object> Games_releases_followed = new ArrayList<>();
+        //Todo connection BDD
+        //On récupère toutes les données dans la BDD
 
-        games_List_items = new ArrayList<>();
+
+
+        //int id_article, String titre,String plateforme, String date
+        Games_releases_global.add(new Games_release_object(18,"Battlefield V","XBOX","25/06/2018"));
+        Games_releases_global.add(new Games_release_object(19,"Fornite","PC","30/06/2018"));
+        Games_releases_followed.add(new Games_release_object(18,"Battlefield V","XBOX","25/06/2018"));
+
+
+        //Code fonctionnel
+        if(global_event=="Yes"){
+            games_List_items = new ArrayList<>();
+            int i=0;
+            for(Games_release_object item_release: Games_releases_global){
+                int followed = 0;
+                for(Games_release_object item_followed: Games_releases_followed){
+                    if(item_release.getId_article()==item_followed.getId_article()){
+                        followed=1;
+                        break;
+                    }
+                }
+                games_List_items.add(new Event_list_games(i,item_release.getId_article(),item_release.getTitre(),item_release.getPlateforme(),item_release.getDate(),followed));
+                i++;
+            }
+        }
+        else {
+            games_List_items = new ArrayList<>();
+            int i=0;
+            for(Games_release_object item_followed: Games_releases_followed) {
+                games_List_items.add(new Event_list_games(i,item_followed.getId_article(),item_followed.getTitre(),item_followed.getPlateforme(),item_followed.getDate(),1));
+                i++;
+            }
+        }
+
+        /*games_List_items = new ArrayList<>();
         games_List_items.add(new Event_list_games(1,1,"CSGO","XBOX","23/05/2018",0));
         games_List_items.add(new Event_list_games(2,15,"battlefield","PC","23/05/2018",0));
         games_List_items.add(new Event_list_games(3,85,"overwatch","PC","23/05/2018",1));
@@ -136,20 +156,7 @@ public class event extends AppCompatActivity
         games_List_items.add(new Event_list_games(5,441,"Mario","wii","23/05/2018",0));
         games_List_items.add(new Event_list_games(6,57,"Fortnite","PC","23/05/2018",1));
         games_List_items.add(new Event_list_games(7,15,"didisco","XBOX","23/05/2018",0));
-        games_List_items.add(new Event_list_games(8,55,"Looss","PS4","23/05/2018",0));
-
-
-        /*int notification_send=0;
-        String filter="None";//Les filtres
-        String global_event="Yes";//Yes = tous les event, No = Follow only
-        for (Event_list_games item : games_List_items) {
-            if (item.getIs_follow()==1) {
-                Log.i("Suivi","Article suivi"+item.getId_article());
-                if(notification_send==0){
-
-                }
-            }
-        }*/
+        games_List_items.add(new Event_list_games(8,55,"Looss","PS4","23/05/2018",0));*/
 
     }
     public void actualiser_listview(){
@@ -164,7 +171,7 @@ public class event extends AppCompatActivity
         listviewGames.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick (AdapterView<?> parent, View view, int position, long id){
-                //Toast.makeText(getApplicationContext(), "Click on=" + view.getTag()+" Position: "+position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Click on=" + view.getTag()+" Position: "+position, Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -14,5 +14,12 @@
     <string name="filter_asc_date">Date croissante</string>
     <string name="filter_desc_date">Date décroissante</string>
     <string name="filter_title">Filtres</string>
+
 	<string name="connecttoapp">Connexion</string>
+    <string name="email_contact">Support: contact.gamesup@gmail.com</string>
+
+    <string name="hint_password">Mot de passe</string>
+    <string name="hint_password_confirm">Confirmez le mot de passe</string>
+    <string name="create_account">Pas de compte ? Créer en un ici</string>
+    <string name="hint_email"> Adresse Email</string>
 </resources>

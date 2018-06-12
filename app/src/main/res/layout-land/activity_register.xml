@@ -1,5 +1,6 @@
 <?xml version = "1.0" encoding = "utf-8"?>
 <!-- Created by Armand ITO on 10/06/2018.  -->
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools = "http://schemas.android.com/tools"
     android:layout_width="fill_parent"
@@ -21,7 +22,6 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText0"
         android:layout_marginTop = "20dp"
         android:id="@+id/editText"
         android:layout_marginBottom="8dp"
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:textColor = "@color/white"
             android:inputType="textEmailAddress"
-            android:hint=" Email"/>
+            android:hint="@string/hint_email"/>
     </android.support.design.widget.TextInputLayout>
 
     <!-- Password Label -->
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:textColor = "@color/white"
             android:inputType="textPassword"
-            android:hint="Password"/>
+            android:hint="@string/hint_password"/>
     </android.support.design.widget.TextInputLayout>
 
     <!-- Password Label -->
@@ -66,14 +66,14 @@
             android:layout_height="wrap_content"
             android:textColor = "@color/white"
             android:inputType="textPassword"
-            android:hint="Password confirmation"/>
+            android:hint="@string/hint_password_confirm"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button"
-        android:text="Create account"
+        android:text="@string/create_account"
         android:layout_below="@+id/editText3"
         />
 
