@@ -2,6 +2,7 @@
 <resources>
 	<string name="app_name">GamesUp</string>
     <string name="title_activity_event">Sorties de Jeux-vidéos</string>
+    <string name="title_followed">Jeux suivis</string>
 
     <string name="navigation_drawer_open">Ouvrir le menu</string>
     <string name="navigation_drawer_close">Fermer le menu</string>
@@ -14,7 +15,6 @@
     <string name="filter_asc_date">Date croissante</string>
     <string name="filter_desc_date">Date décroissante</string>
     <string name="filter_title">Filtres</string>
-
 	<string name="connecttoapp">Connexion</string>
     <string name="email_contact">Support: contact.gamesup@gmail.com</string>
 
@@ -22,4 +22,10 @@
     <string name="hint_password_confirm">Confirmez le mot de passe</string>
     <string name="create_account">Pas de compte ? Créer en un ici</string>
     <string name="hint_email"> Adresse Email</string>
+
+    <string name="notif_title">GamesUp: Des jeux suivis vont sortir ce mois-ci!</string>
+    <string name="notif_channel_title">GamesUp-Notifier</string>
+    <string name="notif_channel_description">Notification des derniers jeux sortis que tu suis</string>
+
+    <string name="loading_text">Chargement des données...</string>
 </resources>
