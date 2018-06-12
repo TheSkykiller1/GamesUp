@@ -1,0 +1,50 @@
+//Take all data after a certain date-1
+        //SELECT idevent,titre,date FROM table WHERE TheNameOfTimestampColumn > DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 1 DAY)
+        /*
+        a terminer (notif)
+        SELECT  idevent,titre,date
+        FROM    event
+        WHERE   date >= DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 1 DAY) AND
+        date   <= DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 1 DAY)
+        */
+        ////
+        //Todo appliquer les filtres
+        //Todo choisir le mode de visualition
+        //Todo connection bdd
+        //Todo Notif grace a la bdd directement
+        /*int notification_send=0;
+        String filter="None";//Les filtres
+        String global_event="Yes";//Yes = tous les event, No = Follow only
+        for (Event_list_games item : games_List_items) {
+            if (item.getIs_follow()==1) {
+                Log.i("Suivi","Article suivi"+item.getId_article());
+                if(notification_send==0){
+
+                }
+            }
+        }*/
+		
+		
+		
+		
+		
+		
+		
+		
+		pour global data sans temps
+		
+		
+		SELECT p2.idevent , titre, GROUP_CONCAT(DISTINCT nom SEPARATOR ', ') as plateformes, date FROM plateforme p1 INNER JOIN plateformeevent p2 ON p2.idplateforme=p1.idplateforme INNER JOIN event E ON E.idevent=p2.idevent GROUP BY titre
+		
+		
+		Globale avec a partir de la date actuelle et asc (Plus recent d'abord)
+		SELECT p2.idevent , titre, GROUP_CONCAT(DISTINCT nom SEPARATOR ', ') as plateformes, date FROM plateforme p1 INNER JOIN plateformeevent p2 ON p2.idplateforme=p1.idplateforme INNER JOIN event E ON E.idevent=p2.idevent WHERE date>CURRENT_TIMESTAMP GROUP BY titre ORDER BY `E`.`date` ASC
+		
+		Globale avec a partir de la date actuelle et DESC (plus recent en bas et le plus loin dans le future en haut)
+		SELECT p2.idevent , titre, GROUP_CONCAT(DISTINCT nom SEPARATOR ', ') as plateformes, date FROM plateforme p1 INNER JOIN plateformeevent p2 ON p2.idplateforme=p1.idplateforme INNER JOIN event E ON E.idevent=p2.idevent WHERE date>CURRENT_TIMESTAMP GROUP BY titre ORDER BY `E`.`date` DESC
+		
+		
+		Follow sans date sans ordre
+		
+		SELECT p2.idevent , titre, GROUP_CONCAT(DISTINCT nom SEPARATOR ', ') as plateformes, date FROM plateforme p1 INNER JOIN plateformeevent p2 ON p2.idplateforme=p1.idplateforme INNER JOIN event E ON E.idevent=p2.idevent INNER JOIN follows f ON f.idevent=p2.idevent INNER JOIN users u ON u.iduser=f.iduser WHERE email="yolo@yolo.com" GROUP BY titre
+		
