@@ -21,6 +21,7 @@
     <string name="hint_password">Password</string>
     <string name="hint_password_confirm">Password confirmation</string>
     <string name="create_account">No account yet? Create one</string>
+    <string name="create_count">Créer ton compte</string>
     <string name="hint_email"> Email</string>
 
     <string name="notif_title">GamesUp: One or more games followed will release this month!</string>

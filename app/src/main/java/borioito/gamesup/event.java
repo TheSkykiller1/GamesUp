@@ -31,6 +31,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -39,6 +41,10 @@ import android.app.*;
 import android.support.v4.app.*;
 import android.os.Build;
 import android.content.*;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class event extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -53,9 +59,12 @@ public class event extends AppCompatActivity
     int Notification_id=10;
     String CHANNEL_ID;
 
+    //Pour la récuperation dans la databse
+    List<Games_release_object> Games_releases_global;
+    List<Games_release_object> Games_releases_followed;
 
     /**Tous les requetes HTTP pour la BDD*/
-    /*private class AsyncFollow_interact extends AsyncTask<String, String, String> {
+    private class AsyncFollow_interact extends AsyncTask<String, String, String> {
 
         ProgressDialog pdLoading = new ProgressDialog( event.this);
         HttpURLConnection conn;
@@ -92,8 +101,8 @@ public class event extends AppCompatActivity
                 // Append parameters to URL
                 Uri.Builder builder = new Uri.Builder()
                         .appendQueryParameter("action", params[0])
-                        .appendQueryParameter("EMAIL", params[1])
-                        .appendQueryParameter("ID", params[2]);
+                        .appendQueryParameter("email", params[1])
+                        .appendQueryParameter("id", params[2]);
                 String query = builder.build().getEncodedQuery();
 
                 // Open connection for sending data
@@ -130,9 +139,96 @@ public class event extends AppCompatActivity
         protected void onPostExecute(String result) {
             pdLoading.dismiss();
         }
-    }*/
+    }
 
+    private class AsyncEvent_get extends AsyncTask<String, String, String> {
 
+        ProgressDialog pdLoading = new ProgressDialog( event.this);
+        HttpURLConnection conn;
+        URL url = null;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //this method will be running on UI thread
+            pdLoading.setMessage("\t"+getString(R.string.loading_text));
+            pdLoading.setCancelable(false);
+            pdLoading.show();
+        }
+        @Override
+        protected String doInBackground(String... params) {
+
+            try {
+                url = new URL("http://multiversepurity.ddns.net/global_event.php");
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                return "exception";
+            }
+
+            try {
+                // Setup HttpURLConnection class to send and receive data from php and mysql
+                conn = (HttpURLConnection)url.openConnection();
+                conn.setRequestMethod("POST");
+
+                // setDoInput and setDoOutput method depict handling of both send and receive
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
+
+                // Append parameters to URL
+                Uri.Builder builder = new Uri.Builder()
+                        .appendQueryParameter("filtre", params[0])
+                        .appendQueryParameter("global", params[1])
+                        .appendQueryParameter("email", params[2]);
+                String query = builder.build().getEncodedQuery();
+
+                // Open connection for sending data
+                OutputStream os = conn.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(query);
+                writer.flush();
+                writer.close();
+                os.close();
+                conn.connect();
+
+            } catch (IOException e1) {
+                e1.printStackTrace();
+                return "exception";
+            }
+            try {
+                int response_code = conn.getResponseCode();
+                // Check if successful connection made
+                if (response_code == HttpURLConnection.HTTP_OK) {
+                    // Read data sent from server
+                    InputStream input = conn.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);
+
+                    }
+
+                    // Pass data to onPostExecute method
+                    return(result.toString());
+                }else{
+
+                    return("unsuccessful");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return "exception";
+            } finally {
+                conn.disconnect();
+            }
+        }
+        @Override
+        protected void onPostExecute(String result) {
+
+            pdLoading.dismiss();
+        }
+    }
 
     /**Adaptateur pour la listview*/
     public class Event_list_adapter extends BaseAdapter {
@@ -187,11 +283,10 @@ public class event extends AppCompatActivity
                     if(games_List_items.get(position_object).getIs_follow()==1){ //Si on suit un jeu alors on arrete de le suivre
                         //ACTION
                         Button but_follow_state =(Button)viewer.findViewById(R.id.text_but_follow);
-
                         final String action = "DEL";
                         final String email = email_address;
                         final String id = ""+games_List_items.get(position_object).getId_article();
-                       // new event.AsyncFollow_interact().execute(action,email,id);
+                        new event.AsyncFollow_interact().execute(action,email,id);
 
                         games_List_items.get(position_object).setIs_follow(0);
                         but_follow_state.setText(getString(R.string.but_follow));
@@ -204,7 +299,7 @@ public class event extends AppCompatActivity
                         final String action = "ADD";
                         final String email = email_address;
                         final String id = ""+games_List_items.get(position_object).getId_article();
-                       // new event.AsyncFollow_interact().execute(action,email,id);
+                        new event.AsyncFollow_interact().execute(action,email,id);
 
                         games_List_items.get(position_object).setIs_follow(1);
                         but_follow_state.setText(getString(R.string.but_unfollow));
@@ -217,7 +312,9 @@ public class event extends AppCompatActivity
         }
 
     }
-   private void createNotificationChannel() {
+
+    /**Create notification*/
+    private void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -255,7 +352,6 @@ public class event extends AppCompatActivity
         createNotificationChannel(); //Execute seulement une fois pour android 8+
         setOnTap();
     }
-
     public void afficher_notification(){
         //Todo prendre les infos sur les jeux sortant ce mois-ci et qui sont follow par l'utilisateur.
         List<Games_release_object> Games_followed_release_this_month = new ArrayList<>();
@@ -265,34 +361,76 @@ public class event extends AppCompatActivity
                 notification_text += item_followed.getTitre()+ " ";
             }
         }
-
     }
 
+    /**ListView data*/
     public void get_event_from_database()
     {
         createNotificationChannel(); //Execute seulement une fois.
         createNotification();
 
-        List<Games_release_object> Games_releases_global = new ArrayList<>();
-        List<Games_release_object> Games_releases_followed = new ArrayList<>();
-        //Todo connection BDD
-        //On récupère toutes les données dans la BDD
+        Games_releases_global = new ArrayList<>();
+        Games_releases_followed = new ArrayList<>();
 
+        //On recupere les data globales
+        final String temp_global = "Yes";
+        final String temp_filter = filter;
+        final String temp_email = "";
+        AsyncEvent_get toto = new event.AsyncEvent_get();
+        toto.execute(temp_filter,temp_global,temp_email);
+        try {
+            String array=toto.get();
+            JSONArray boss = new JSONArray(array);
+            JSONObject bigboss = null;
+            for(int j=0;j<boss.length();j++){
+                bigboss=boss.getJSONObject(j); //On recup la premiere ligne
+                int fill_id= Integer.parseInt(bigboss.getString("idevent"));
+                String v1 = bigboss.getString("titre");
+                String v2 = bigboss.getString("plateformes");
+                String v3 = bigboss.getString("date");
+                Games_releases_global.add(new Games_release_object(fill_id,v1,v2,v3));
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
+        //Puis les data followed
+        final String temp_global2 = "No";
+        final String temp_filter2 = filter;
+        final String temp_email2= email_address;
+        AsyncEvent_get follow_get = new event.AsyncEvent_get();
+        follow_get.execute(temp_filter2,temp_global2,temp_email2);
+        try {
+            String array=follow_get.get();
+            JSONArray boss = new JSONArray(array);
+            JSONObject bigboss = null;
+            for(int j=0;j<boss.length();j++){
+                bigboss=boss.getJSONObject(j); //On recup la premiere ligne
+                int fill_id= Integer.parseInt(bigboss.getString("idevent"));
+                String v1 = bigboss.getString("titre");
+                String v2 = bigboss.getString("plateformes");
+                String v3 = bigboss.getString("date");
+                Games_releases_followed.add(new Games_release_object(fill_id,v1,v2,v3));
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         //int id_article, String titre,String plateforme, String date
-        Games_releases_global.add(new Games_release_object(18,"Battlefield V","XBOX","25/06/2018"));
+        /*Games_releases_global.add(new Games_release_object(18,"Battlefield V","XBOX","25/06/2018"));
         Games_releases_global.add(new Games_release_object(19,"Fornite","PC","30/06/2018"));
 
-        Games_releases_global.add(new Games_release_object(20,"Overwatch","PC","15/06/2018"));
-        Games_releases_global.add(new Games_release_object(21,"Mario world","PC,XBOX,PS4,PS VITA, WII, SWITCH","10/08/2018"));
-
-        Games_releases_global.add(new Games_release_object(22,"AC:O","XBOX,PC,PS4","22/10/2018"));
-        Games_releases_global.add(new Games_release_object(23,"Avenger the game","PC","30/11/2018"));
-
         Games_releases_followed.add(new Games_release_object(18,"Battlefield V","XBOX","25/06/2018"));
-        Games_releases_followed.add(new Games_release_object(22,"AC:O","XBOX,PC,PS4","22/10/2018"));
-        Games_releases_followed.add(new Games_release_object(20,"Overwatch","PC","15/06/2018"));
+        Games_releases_followed.add(new Games_release_object(22,"AC:O","XBOX,PC,PS4","22/10/2018"));*/
+        //Games_releases_followed.add(new Games_release_object(20,"Overwatch","PC","15/06/2018"));
 
 
         //Code fonctionnel
@@ -391,9 +529,11 @@ public class event extends AppCompatActivity
             actualiser_listview();
         } else if (id == R.id.filter_ac) {
             filter="ASC";
+            actualiser_listview();
 
         } else if (id == R.id.filter_dc) {
             filter="DESC";
+            actualiser_listview();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

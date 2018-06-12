@@ -80,17 +80,18 @@
         />
 
 
-    <Button android:id="@+id/signup"
-        android:layout_below="@+id/button"
-        android:textColor = "@color/white"
-        android:layout_marginTop = "20dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="@string/create_account"
-        android:gravity="center"
-        android:onClick="mysignup"
-        android:textSize="16dip"/>
+        <Button android:id="@+id/signup"
+            android:layout_below="@+id/button"
+            android:textColor = "@color/white"
+            android:layout_marginTop = "20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="@string/create_account"
+            android:gravity="center"
+            android:onClick="mysignup"
+            android:textSize="16dip"/>
+
 
     <TextView
         android:id="@+id/tv_check_connection"
