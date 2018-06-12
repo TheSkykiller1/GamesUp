@@ -22,7 +22,7 @@
     <string name="hint_password_confirm">Confirmez le mot de passe</string>
     <string name="create_account">Pas de compte ? Créer en un ici</string>
     <string name="create_count">Créer ton compte</string>
-    <string name="hint_email"> Adresse Email</string>
+    <string name="hint_email">Adresse Email</string>
     <string name="liste">Liste des jeux</string>
 
     <string name="notif_title">GamesUp: Sorties de jeux abonnés!</string>
@@ -31,4 +31,21 @@
 
     <string name="loading_text">Chargement des données...</string>
     <string name="followed_game_notif_text">Jeux: Titres, Date, Plateformes\n</string>
+
+    <!--added by my-->
+    <string name="authenticating_text">Authentification...</string>
+    <string name="registration_text">Inscrription...</string>
+
+    <string name="invalide_text">Mot de passe ou email invalide</string>
+
+    <string name="connexion_error">Un problème est survenue. Problème de connection</string>
+    <string name="server_error">Connection avec le serveur perdu</string>
+
+    <string name="wrong_email">Email invalide</string>
+    <string name="wrong_password">Mot de passe non identique</string>
+
+    <string name="created_account">Compte créer</string>
+    <string name="existing_user">Email déjà pris</string>
+
+
 </resources>

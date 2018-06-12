@@ -30,5 +30,23 @@
     <string name="notif_channel_description">Notification of latest games release that you follow</string>
 
     <string name="loading_text">Loading data...</string>
+
+    <!--added by my-->
+    <string name="authenticating_text">Authenticating...</string>
+    <string name="registration_text">Registration...</string>
+
+    <string name="invalide_text">Invalid email or password</string>
+
+    <string name="connexion_error">Something went wrong! Connection Problem.</string>
+    <string name="server_error">Lost connection with server</string>
+
+    <string name="wrong_email">Please set a real email</string>
+    <string name="wrong_password">password not the same</string>
+
+    <string name="created_account">Account created</string>
+    <string name="existing_user">Existing user</string>
+
+
+
     <string name="followed_game_notif_text">Games: Title, Date, Plateform\n</string>
 </resources>

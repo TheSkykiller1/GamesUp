@@ -46,9 +46,9 @@ public class login_screen extends AppCompatActivity {
     private BroadcastReceiver mNetworkReceiver;
     static TextView tv_check_connection;
 
-    Button b_login, b_contact;
+    Button b_login, b_signup;
     EditText ed_email,ed_passwd;
-    TextView tx_title,tx_signup;
+    TextView tx_title;
 
     /**
      * Very first called function to create the Activity
@@ -67,7 +67,8 @@ public class login_screen extends AppCompatActivity {
         ed_passwd = (EditText)findViewById(R.id.input_password);
 
         tx_title = (TextView)findViewById(R.id.titleApp);
-        tx_signup = (TextView)findViewById(R.id.signup);
+
+        b_signup = (Button)findViewById(R.id.createAccount);
 
         tv_check_connection=(TextView) findViewById(R.id.tv_check_connection);
         mNetworkReceiver = new internet_connection_checker();
@@ -87,6 +88,14 @@ public class login_screen extends AppCompatActivity {
                 new AsyncLogin().execute(email,password);
             }
 
+        });
+
+        b_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( getApplicationContext(),register.class);
+                startActivity(intent);
+            }
         });
 
     }
@@ -169,14 +178,6 @@ public class login_screen extends AppCompatActivity {
 
     /**
      *
-     * @param v
-     */
-    protected void mysignup(View v){
-        startActivity(new Intent(login_screen.this, register.class));
-    }
-
-    /**
-     *
      */
     public void FirstConnectionTest(){
         try
@@ -221,7 +222,7 @@ public class login_screen extends AppCompatActivity {
             super.onPreExecute();
 
             //this method will be running on UI thread
-            pdLoading.setMessage("\tLoading...");
+            pdLoading.setMessage("\t"+getText(R.string.authenticating_text));
             pdLoading.setCancelable(false);
             pdLoading.show();
 
@@ -315,19 +316,18 @@ public class login_screen extends AppCompatActivity {
                 startActivity(intent);
                 login_screen.this.finish();
 
-                //Toast.makeText(login_screen.this, "Validation", Toast.LENGTH_LONG).show();
             }else if (result.equalsIgnoreCase("false")){
 
                 // If username and password does not match display a error message
-                Toast.makeText(login_screen.this, "Invalid email or password", Toast.LENGTH_LONG).show();
+                Toast.makeText(login_screen.this, getText(R.string.invalide_text), Toast.LENGTH_LONG).show();
 
             } else if (result.equalsIgnoreCase("exception") || result.equalsIgnoreCase("unsuccessful")) {
 
-                Toast.makeText(login_screen.this, "Something went wrong! Connection Problem.", Toast.LENGTH_LONG).show();
+                Toast.makeText(login_screen.this, getText(R.string.connexion_error), Toast.LENGTH_LONG).show();
 
             } else {
 
-                Toast.makeText(login_screen.this, "Lost connection with server", Toast.LENGTH_LONG).show();
+                Toast.makeText(login_screen.this, getText(R.string.server_error), Toast.LENGTH_LONG).show();
 
             }
         }
