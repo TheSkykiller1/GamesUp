@@ -290,7 +290,7 @@ public class event extends AppCompatActivity
 
                         games_List_items.get(position_object).setIs_follow(0);
                         but_follow_state.setText(getString(R.string.but_follow));
-                        //Log.i("Suivi","Event non suivi "+position_object+" IS follow? "+games_List_items.get(position_object).getIs_follow());
+                        Log.i("Suivi","Event non suivi "+position_object+"+email "+ email_address +"Article id"+games_List_items.get(position_object).getId_article());
                     }
                     else { //Si on ne suit pas ce jeu alors on le suit.
                         //ACTION
@@ -303,7 +303,7 @@ public class event extends AppCompatActivity
 
                         games_List_items.get(position_object).setIs_follow(1);
                         but_follow_state.setText(getString(R.string.but_unfollow));
-                        //Log.i("Suivi","Event suivi "+position_object+" IS follow? "+games_List_items.get(position_object).getIs_follow());
+                        Log.i("Suivi","Event suivi "+position_object+" +email "+ email_address + "Article ID? "+games_List_items.get(position_object).getId_article());
                     }
                 }
             });
