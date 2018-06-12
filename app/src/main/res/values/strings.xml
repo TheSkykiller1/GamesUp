@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">GamesUp</string>
     <string name="title_activity_event">Games Release</string>
+    <string name="title_followed">Games followed</string>
 
     <string name="navigation_drawer_open">Open menu</string>
     <string name="navigation_drawer_close">Close menu</string>
@@ -20,5 +21,14 @@
     <string name="hint_password">Password</string>
     <string name="hint_password_confirm">Password confirmation</string>
     <string name="create_account">No account yet? Create one</string>
+    <string name="create_count">Créer ton compte</string>
     <string name="hint_email"> Email</string>
+    <string name="liste">Games List</string>
+
+    <string name="notif_title">GamesUp: Games followed releases this month!</string>
+    <string name="notif_channel_title">GamesUp-Notifier</string>
+    <string name="notif_channel_description">Notification of latest games release that you follow</string>
+
+    <string name="loading_text">Loading data...</string>
+    <string name="followed_game_notif_text">Games: Title, Date, Plateform\n</string>
 </resources>
