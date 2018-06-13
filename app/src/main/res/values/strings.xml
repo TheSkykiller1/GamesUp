@@ -45,7 +45,8 @@
 
     <string name="created_account">Account created</string>
     <string name="existing_user">Existing user</string>
-
+    <string name="cannotconnect">Could not Connect to internet!</string>
+    <string name="connectresolve">Connection to internet is back!</string>
 
 
     <string name="followed_game_notif_text">Games: Title, Date, Plateform\n</string>

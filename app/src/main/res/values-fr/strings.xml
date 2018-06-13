@@ -41,6 +41,9 @@
     <string name="connexion_error">Un problème est survenue. Problème de connection</string>
     <string name="server_error">Connection avec le serveur perdu</string>
 
+    <string name="cannotconnect">Pas de connexion internet!</string>
+    <string name="connectresolve">Connexion internet retrouvée!</string>
+
     <string name="wrong_email">Email invalide</string>
     <string name="wrong_password">Mot de passe non identique</string>
 

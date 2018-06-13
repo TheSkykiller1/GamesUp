@@ -21,7 +21,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 // java.io imports
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -45,7 +44,7 @@ public class login_screen extends AppCompatActivity {
 
     private BroadcastReceiver mNetworkReceiver;
     static TextView tv_check_connection;
-
+    private static Context appContext;
     Button b_login, b_signup;
     EditText ed_email,ed_passwd;
     TextView tx_title;
@@ -59,7 +58,7 @@ public class login_screen extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
-
+        appContext=this;
         b_login = (Button)findViewById(R.id.button);
         //b_contact = (Button)findViewById(R.id.button2);
 
@@ -107,8 +106,8 @@ public class login_screen extends AppCompatActivity {
     public static void dialog(boolean value){
 
         if(value){
-            tv_check_connection.setText("Connection is back !!!");
-            tv_check_connection.setBackgroundColor(Color.GREEN);
+            tv_check_connection.setText(appContext.getResources().getString(R.string.connectresolve));
+            tv_check_connection.setBackgroundColor(Color.parseColor("#11890d"));
             tv_check_connection.setTextColor(Color.WHITE);
 
             Handler handler = new Handler();
@@ -124,8 +123,8 @@ public class login_screen extends AppCompatActivity {
         } else {
 
             tv_check_connection.setVisibility(View.VISIBLE);
-            tv_check_connection.setText("Could not Connect to internet");
-            tv_check_connection.setBackgroundColor(Color.RED);
+            tv_check_connection.setText(appContext.getResources().getString(R.string.cannotconnect));
+            tv_check_connection.setBackgroundColor(Color.parseColor("#ac1212"));
             tv_check_connection.setTextColor(Color.WHITE);
 
         }

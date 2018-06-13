@@ -5,7 +5,7 @@
     xmlns:tools = "http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/blue"
+    android:background="@drawable/contenteventbg"
     tools:context = ".login_screen">
 
 <RelativeLayout
@@ -13,7 +13,7 @@
     android:layout_height = "fill_parent"
     android:paddingLeft= "30dp"
     android:paddingRight = "30dp"
-    android:paddingTop = "30dp"
+    android:paddingTop = "10dp"
     android:paddingBottom = "10dp">
 
 
@@ -36,19 +36,30 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/ic_high_news" />
 
+    <TextView
+        android:id="@+id/tv_check_connection"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/FirstView"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="" />
+
     <!-- Email Label -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/FirstView"
-        android:layout_marginTop = "20dp"
+        android:layout_below="@+id/tv_check_connection"
+        android:layout_marginTop = "10dp"
         android:id="@+id/editText"
         android:layout_marginBottom="8dp"
         android:theme="@style/TextLabel"
         >
         <EditText android:id="@+id/input_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:textColor = "@color/white"
             android:inputType="textEmailAddress"
             android:hint="@string/hint_email"/>
@@ -65,7 +76,7 @@
         android:theme="@style/TextLabel">
         <EditText android:id="@+id/input_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:textColor = "@color/white"
             android:inputType="textPassword"
             android:hint="@string/hint_password"/>
@@ -73,41 +84,38 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:id="@+id/button"
         android:text="@string/connecttoapp"
+        android:layout_marginBottom="15dp"
         android:layout_below="@+id/editText2"
         />
 
 
-    <Button android:id="@+id/createAccount"
+    <Button
+        android:id="@+id/createAccount"
         android:layout_below="@+id/button"
         android:background="@android:color/transparent"
         android:textColor = "@color/white"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="15dp"
         android:text="@string/create_account"
         android:gravity="center"
     android:textSize="16dip"/>
 
     <TextView
-        android:id="@+id/tv_check_connection"
-        android:layout_below="@+id/createAccount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:padding="25dp"
-        android:gravity="center"/>
-
-    <!--android:id="@+id/eventpasser"-->
-    <TextView
+        android:id="@+id/contacttext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/titleApp"
+        android:layout_below="@+id/createAccount"
         android:text="@string/email_contact"
-        android:textColor = "@color/white"
-        android:layout_below="@+id/tv_check_connection"
-        />
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/white" />
+
+    <!--android:id="@+id/eventpasser"-->
+
 
 </RelativeLayout>
 </ScrollView>
