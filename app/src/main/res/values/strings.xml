@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">GamesUp</string>
     <string name="title_activity_event">Games Release</string>
+    <string name="title_followed">Games followed</string>
 
     <string name="navigation_drawer_open">Open menu</string>
     <string name="navigation_drawer_close">Close menu</string>
@@ -20,5 +21,33 @@
     <string name="hint_password">Password</string>
     <string name="hint_password_confirm">Password confirmation</string>
     <string name="create_account">No account yet? Create one</string>
+    <string name="create_count">Créer ton compte</string>
     <string name="hint_email"> Email</string>
+    <string name="liste">Games List</string>
+
+    <string name="notif_title">GamesUp: Games followed releases this month!</string>
+    <string name="notif_channel_title">GamesUp-Notifier</string>
+    <string name="notif_channel_description">Notification of latest games release that you follow</string>
+
+    <string name="loading_text">Loading data...</string>
+
+    <!--added by my-->
+    <string name="authenticating_text">Authenticating...</string>
+    <string name="registration_text">Registration...</string>
+
+    <string name="invalide_text">Invalid email or password</string>
+
+    <string name="connexion_error">Something went wrong! Connection Problem.</string>
+    <string name="server_error">Lost connection with server</string>
+
+    <string name="wrong_email">Please set a real email</string>
+    <string name="wrong_password">password not the same</string>
+
+    <string name="created_account">Account created</string>
+    <string name="existing_user">Existing user</string>
+    <string name="cannotconnect">Could not Connect to internet!</string>
+    <string name="connectresolve">Connection to internet is back!</string>
+
+
+    <string name="followed_game_notif_text">Games: Title, Date, Plateform\n</string>
 </resources>

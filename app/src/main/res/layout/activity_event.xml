@@ -5,9 +5,9 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/nav_bar_menu"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start"
-    android:background="@drawable/nav_bar_menu">
+    tools:openDrawer="start">
 
     <include
         layout="@layout/app_bar_event"
@@ -21,6 +21,6 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_event"
-        app:menu="@menu/activity_event_drawer"/>
+        app:menu="@menu/activity_event_drawer" />
 
 </android.support.v4.widget.DrawerLayout>

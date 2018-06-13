@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,21 +28,22 @@ import java.net.URL;
  */
 public class register extends AppCompatActivity {
 
-    Button b_signup;
+    Button b_createAccount;
     EditText ed_email,ed_passwd,ed_passwd2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("Thierry", "D");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        b_signup = (Button)findViewById(R.id.signup);
+        b_createAccount = (Button)findViewById(R.id.signup);
 
         ed_email = (EditText)findViewById(R.id.input_email);
         ed_passwd = (EditText)findViewById(R.id.input_password);
         ed_passwd2 = (EditText)findViewById(R.id.input_password2);
 
-        b_signup.setOnClickListener(new View.OnClickListener(){
+        b_createAccount.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
@@ -56,11 +58,11 @@ public class register extends AppCompatActivity {
                         new AsyncSignup().execute(email,password);
                     }
                     else {
-                        Toast.makeText(register.this, "Please set a real email", Toast.LENGTH_LONG).show();
+                        Toast.makeText(register.this, getText(R.string.wrong_email), Toast.LENGTH_LONG).show();
                     }
                 }
                 else {
-                    Toast.makeText(register.this, "password not the same", Toast.LENGTH_LONG).show();
+                    Toast.makeText(register.this, getText(R.string.wrong_password), Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -76,7 +78,7 @@ public class register extends AppCompatActivity {
                 super.onPreExecute();
 
                 //this method will be running on UI thread
-                pdLoading.setMessage("\tLoading...");
+                pdLoading.setMessage("\t"+getText(R.string.registration_text));
                 pdLoading.setCancelable(false);
                 pdLoading.show();
 
@@ -168,7 +170,7 @@ public class register extends AppCompatActivity {
 
                 if(result.equalsIgnoreCase("true")) {
 
-                    Toast.makeText(register.this, "Account created", Toast.LENGTH_LONG).show();
+                    Toast.makeText(register.this, getText(R.string.created_account), Toast.LENGTH_LONG).show();
 
                     Intent intent = new Intent(register.this,login_screen.class);
                         startActivity(intent);
@@ -177,15 +179,15 @@ public class register extends AppCompatActivity {
                 }else if (result.equalsIgnoreCase("false")){
 
                     // If username and password does not match display a error message
-                    Toast.makeText(register.this, "Existing user", Toast.LENGTH_LONG).show();
+                    Toast.makeText(register.this, getText(R.string.existing_user), Toast.LENGTH_LONG).show();
 
                 } else if (result.equalsIgnoreCase("exception") || result.equalsIgnoreCase("unsuccessful")) {
 
-                    Toast.makeText(register.this, "Something went wrong! Connection Problem.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(register.this, getText(R.string.connexion_error), Toast.LENGTH_LONG).show();
 
                 } else {
 
-                    Toast.makeText(register.this, "Lost connection with server", Toast.LENGTH_LONG).show();
+                    Toast.makeText(register.this,  getText(R.string.server_error), Toast.LENGTH_LONG).show();
 
                 }
             }

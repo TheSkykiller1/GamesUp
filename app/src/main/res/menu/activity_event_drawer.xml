@@ -8,6 +8,10 @@
             android:id="@+id/nav_follow"
             android:icon="@drawable/ic_follow"
             android:title="@string/followedgame" />
+        <item
+            android:id="@+id/nav_follow1"
+            android:icon="@drawable/ic_follow"
+            android:title="@string/liste" />
     </group>
 
     <item android:title="@string/filter_title">
