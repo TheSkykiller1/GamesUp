@@ -1,7 +1,8 @@
 ========================================================
-						GamesUp
-		Games Releases Notifier
-		
+
+		GamesUp
+		"Games Releases Notifier"
+
 ========================================================
 
 # Presentation
